@@ -13,4 +13,11 @@ router.delete('/deleteUser/:id',middleware.verifyToken,userController.deleteUser
 router.put('/update/:id',middleware.verifyToken,userController.updateUser);
 
 
+
+// .env 
+PORT = 2000
+// db_mongo="mongodb://localhost:27017"
+// JWT_SECRET= "kpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0"
+// JWT_EXPIRES = 1d
+
 module.exports = router;
