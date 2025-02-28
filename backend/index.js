@@ -10,6 +10,31 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+    res.send("Servidor funcionando correctamente 🚀");
+});
+
+
+
+// Configurar sesiones
+// app.use(session({
+//     secret: config.secret,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//         maxAge: config.expiracion,
+//         httpOnly: true,
+//         secure: process.env.NODE_ENV === "production" // Solo en HTTPS
+//     }
+// }));
+
+
+
+mongoose.connect("mongodb://localhost:27017/" + config.bd).then((respuesta) => {
+    console.log("Conexión a MongoDB correcta");
+}).catch((error) => {
+    console.log("Error al conectar a MongoDB:", error);
+});
 
 // Middleware CORS
 app.use(cors({
@@ -23,43 +48,6 @@ app.use(cors({
     credentials: true
 }));
 
-// Configurar sesiones
-app.use(session({
-    secret: config.secret,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: config.expiracion,
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production" // Solo en HTTPS
-    }
-}));
-
-// Conexión a MongoDB
-mongoose.connect(config.mongoURI, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true
-}).then(() => {
-    console.log("✅ Conexión a MongoDB correcta");
-}).catch((error) => {
-    console.error("❌ Error al conectar a MongoDB:", error);
-});
-
-// mongoose.connect("mongodb://127.0.0.1:27017/" + config.bd).then((respuesta) => {
-//     console.log("Conexión a MongoDB correcta");
-// })
-//     .catch((error) => {
-//         console.log("Error al conectar a MongoDB:", error);
-//     });
-
-
-// mongoose.connect("mongodb://" + config.bdUser + ":" + config.bdPass + '@' + config.bdIp + ":" + config.bdPort + "/" + config.bd).then((respuesta) => {
-//     console.log("Conexion correcta a mongo")
-// }).catch((error) => {
-//     console.log(error)
-// })
-
-
 //Rutas
 app.use(require("./rutas.js"))
 
@@ -67,13 +55,15 @@ app.use(require("./rutas.js"))
 app.use("/", express.static(path.join(__dirname, "Pagina")));
 
 // Ruta para manejar SPA en Angular
-app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, "dist", "frontend", "browser", "index.html"));
-});
+// app.get('/*', function (req, res) {
+//     res.sendFile(path.join(__dirname, "dist", "frontend", "browser", "index.html"));
+// });
 
 // Iniciar servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+app.listen(3000, () => {
+    console.log("Servidor corriendo en http://localhost:3000");
 });
+
+
+
 
