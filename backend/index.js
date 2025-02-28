@@ -1,11 +1,21 @@
-const express = require('express');
+require('dotenv').config(); //miller
+const express = require('express');//miller
+const router = require('./routes/routes');//miller
+const connectDB = require('./config/DB');//miller
+
+const app = express();//miller
+let PORT = process.env.PORT;//miller
+app.use(express.json());//miller
+app.use('/api', router);//miller
+connectDB();//miller
+
+
 const mongoose = require("mongoose");
 const session = require("express-session");
 const cors = require("cors");
 const path = require("path");
 const config = require("./config.js").config;
 
-const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -60,8 +70,8 @@ app.use("/", express.static(path.join(__dirname, "Pagina")));
 // });
 
 // Iniciar servidor
-app.listen(3000, () => {
-    console.log("Servidor corriendo en http://localhost:3000");
+app.listen(PORT||3000, () => {
+    console.log("Servidor corriendo en http://localhost:3000"); //MILLER
 });
 
 
