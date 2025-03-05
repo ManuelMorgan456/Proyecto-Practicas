@@ -1,5 +1,4 @@
 const estudiantesControler = require("./api/controladores/estudiantesControler.js").estudiantesControler
-const middleware = require("../middleware/middleware.js").middleware
 const express = require("express");
 const router = express.Router();
 

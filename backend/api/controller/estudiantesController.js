@@ -1,5 +1,5 @@
-const estudiantesModel = require('../modelos/estudiantesModel.js').estudiantesModel
-const estudiantesControler = {}
+const estudiantesModel = require('../models/estudiantesModel.js').estudiantesModel
+const estudiantesController = {}
 const config = require('../../config.js').config
 const { request, response } = require('express')
 const nodemailer = require('nodemailer')
@@ -8,7 +8,7 @@ const { emit } = require('nodemon')
 
 
 //  Registrar un estudiante
-estudiantesControler.Registrar = function (req, res) {
+estudiantesController.Registrar = function (req, res) {
     const post = {
         nombre: req.body.nombre,
         email: req.body.email,
@@ -33,7 +33,7 @@ estudiantesControler.Registrar = function (req, res) {
 };
 
 //  Calcular puntaje crediticio
-estudiantesControler.CalcularPuntaje = function (req, res) {
+estudiantesController.CalcularPuntaje = function (req, res) {
     const post = {
         email: req.body.email
     };
@@ -48,7 +48,7 @@ estudiantesControler.CalcularPuntaje = function (req, res) {
 };
 
 //  Obtener puntaje crediticio
-estudiantesControler.ObtenerPuntaje = function (req, res) {
+estudiantesController.ObtenerPuntaje = function (req, res) {
     const email = req.body.email;
 
     if (!email) {
@@ -72,4 +72,4 @@ estudiantesControler.ObtenerPuntaje = function (req, res) {
 
 
 
-module.exports.estudiantesControler = estudiantesControler
+module.exports.estudiantesController = estudiantesController

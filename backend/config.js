@@ -1,20 +1,45 @@
 const config = {
-    email: {}
-}
+    email: {},
+    urlReal: "http://localhost:4200",
+    puerto: 3003,
+    bd: "ProyectoPracticas",
+    mongoURI: "mongodb://localhost:27017/ProyectoPracticas", // Agrega esta línea
+    secret: "sfg541sfs2f4g5435erd3dfge4d8st1gf*f9g6sdfs/fd8g5ssdtytu7sfd/&%TGdr",
+    email: {
+        host: "smtp.gmail.com",
+        port: 587,
+        user: "dbpruebasdeveloper@gmail.com",
+        pass: "bbbyfovmoyoprtnz"
+    },
+    expiration: 60000 * 5,
+    whitelist: [
+        "http://localhost:4200"
+    ]
+};
 
-config.urlReal = "http://localhost:4200"
-config.puerto = 3000
-config.bd = "ProyectoPracticas"
-config.secret = "sfg541sfs2f4g5435erd3dfge4d8st1gf*f9g6sdfs/fd8g5ssdtytu7sfd/&%TGdr"
+module.exports = { config };
 
-config.email.host = "smtp.gmail.com"
-config.email.port = 587
-config.email.user = "dbpruebasdeveloper@gmail.com"
-config.email.pass = "bbbyfovmoyoprtnz"
-config.expiration = 60000 * 5
-config.whitelist = [
-    "http://localhost:4200"
-]
+
+// const config = {
+//     email: {}
+// }
+
+// config.urlReal = "http://localhost:4200"
+// config.puerto = 3000
+// config.bd = "ProyectoPracticas"
+// config.secret = "sfg541sfs2f4g5435erd3dfge4d8st1gf*f9g6sdfs/fd8g5ssdtytu7sfd/&%TGdr"
+
+// config.email.host = "smtp.gmail.com"
+// config.email.port = 587
+// config.email.user = "dbpruebasdeveloper@gmail.com"
+// config.email.pass = "bbbyfovmoyoprtnz"
+// config.expiration = 60000 * 5
+// config.whitelist = [
+//     "http://localhost:4200"
+// ]
+
+
+
 
 // const config = {
 //     urlReal: process.env.URL_REAL || "http://localhost:4200",
@@ -46,5 +71,6 @@ config.whitelist = [
 //     // Expiración de la sesión
 //     expiracion: process.env.EXPIRACION || 3600000
 // };
+
 
 module.exports = { config };
